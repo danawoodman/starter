@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<title>flo configuration</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <nav>
+      <ol>
+        <li data-tab="status-log" class="selected">Status &amp; Log</li>
+        <li data-tab="config">Configuration</li>
+      </ol>
+    </nav>
+    <section class="status-log tab selected">
+      <h1>Status</h1>
+      <div class="status">
+        <span class="indicator disabled"></span>
+        <span class="text"></span>
+        <button class="action enable hidden">Activate for this site</button>
+        <button class="action retry hidden">Try again</button>
+      </div>
+      <h1>Log&nbsp;&nbsp;<small><a class="report-bug" href="https://github.com/facebook/fb-flo/issues/new" target="_blank">Report a bug</a></small></h1>
+      <div class="log-box" contenteditable>
+
+      </div>
+    </section>
+    <section class="config tab">
+      <h1>Configure flo</h1>
+      <form>
+        <section>
+          <div class="hostnames-container">
+            <label for="hostnames">Sites</label>
+            <p class="desc">Sites to start flo for.</p>
+            <div class="hostnames-options">
+              <ol class="hostnames"></ol>
+              <button class="add">Add New Site</button>
+            </div>
+            <div class="hostname-form hidden">
+              <label>Add Site</label>
+              <div><input name="pattern" placeholder="* hostname pattern" title="Either the full string to match or a regexp in the form of /example\.com/gi." /></div>
+              <div><input name="server" placeholder="flo server hostname" /></div>
+              <div><input name="port" placeholder="flo server port" /> <button>Save</button></div>
+            </div>
+          </div>
+          <div class="port-container">
+            <label for="default-port">Default flo server port number:</label>
+            <p class="desc">The default port number your flo server would be listening on (you can set port number per site).</p>
+           <input name="default-port" />
+          </div>
+        </section>
+      </form>
+    </section>
+  </main>
+  <script src="configure.js"></script>
+</body>
+</html>
