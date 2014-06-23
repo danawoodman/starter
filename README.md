@@ -41,9 +41,9 @@ Try running `gulp watch` in one tab in your terminal program and then edit a LES
 
 ## Credits
 
-Built by [Dana Woodman][dana], founder of [BIG][big], a software/hardware incubation company.
+Built by [Dana Woodman][dana], founder of [BIG][big].
 
-Credit also goes to the authors of all the amazing tools used in this project. Without people like them, we'd still be in the darkages of technology.
+Credit also goes to the authors of all the amazing tools used in this project. Without people like them, we'd still be in the dark ages of technology.
 
 
 ## License
