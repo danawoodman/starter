@@ -6,7 +6,7 @@ Start project for frontend applications using:
 - **[Gulp][gulp]** - A lightning fast task runner.
 - **[Mithril][mithril]** - A light weight JavaScript MVC framework with virtual DOM diffing, auto-redraw and amazingly fast execution speeds all with a very short learning curve.
 - **[LESS][less]** - A CSS preprocessor with variables, functions, and tons of utilities to make writing CSS suck less.
-- **[fb-flo][flo]** for automatic reloading of your HTML, CSS and JavaScript code without refresh.
+- **[fb-flo][fb-flo]** for automatic reloading of your HTML, CSS and JavaScript code without refresh.
 
 Running the gulp scripts (see below), allows you to do some other awesome things like:
 
