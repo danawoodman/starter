@@ -76,6 +76,7 @@ gulp.task('tests', function () {
 
 gulp.task('watch-tests', function () {
   gulp.watch(config.paths.tests, ['tests']);
+  gulp.watch(config.paths.scripts, ['tests']);
 });
 
 
