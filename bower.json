@@ -1,0 +1,37 @@
+{
+  "name": "starter",
+  "version": "0.0.0",
+  "homepage": "https://github.com/BuiltByBig/starter",
+  "authors": [
+    "BIG <hello@builtbybig.com>"
+  ],
+  "description": "Frontend starter application buil by BIG.",
+  "keywords": [
+    "gulp",
+    "node",
+    "bower",
+    "browserify",
+    "react",
+    "jsfmt",
+    "fshint",
+    "starter",
+    "hackathon",
+    "fb-flo",
+    "reload",
+    "concatenate",
+    "minify",
+    "less",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1"
+  }
+}

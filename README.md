@@ -2,9 +2,9 @@
 
 Start project for frontend applications using:
 
+- **[React][react]** - One way view rendering framework by Facebook.
 - **[Browserify][browserify]** - Allows `require('module')` style imports in your frontend JavaScript code.
 - **[Gulp][gulp]** - A lightning fast task runner.
-- **[Mithril][mithril]** - A light weight JavaScript MVC framework with virtual DOM diffing, auto-redraw and amazingly fast execution speeds all with a very short learning curve.
 - **[LESS][less]** - A CSS preprocessor with variables, functions, and tons of utilities to make writing CSS suck less.
 - **[fb-flo][fb-flo]** for automatic reloading of your HTML, CSS and JavaScript code without refresh.
 
@@ -44,6 +44,20 @@ Try running `gulp watch` in one tab in your terminal program and then edit a LES
 _**Note:** You'll need to install the [fb-flo browser extension][fb-flo-extension] for fb-flo to work. Make sure to have developers tools open with the flo extension enabled or it won't work properly._
 
 
+## TODO
+
+- Server rendering of React views
+- JSfmt
+- Boostrap
+- FontAwesome
+- WebPack/Ugilfy
+- Fontend/backend combo (Node.js, Express, bodyparser)
+- Auth (passport)
+- Testing frontend/backend code
+- Procfile
+- Jade?
+
+
 ## Credits
 
 Built by [Dana Woodman][dana], founder of [BIG][big].
@@ -55,8 +69,8 @@ Credit also goes to the authors of all the amazing tools used in this project. W
 
 This source code is released under a liberal [MIT license][mit] (which means you can use it in commercial projects). See the `LICENSE` file for details.
 
-[mithril]: http://lhorie.github.io/mithril/index.html
 [browserify]: http://browserify.org/
+[react]: http://facebook.github.io/react/
 [dana]: http://danawoodman.com/
 [big]: http://builtbybig.com/
 [mit]: http://opensource.org/licenses/MIT

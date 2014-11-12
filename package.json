@@ -7,32 +7,52 @@
     "test": "test"
   },
   "scripts": {
+    "start": "gulp",
     "test": "gulp test"
   },
   "author": "Dana Woodman <dana@danawoodman.com> (http://danawoodman.com)",
   "license": "MIT",
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
+  },
   "devDependencies": {
-    "brfs": "^1.1.1",
-    "browserify": "^4.1.11",
+    "browserify": "^7.0.0",
     "chai": "^1.9.1",
     "connect": "^2.19.6",
     "dotenv": "^0.2.8",
     "fb-flo": "^0.2.1",
     "gulp": "^3.8.1",
     "gulp-clean": "^0.3.0",
+    "gulp-jsfmt": "^0.3.0",
     "gulp-jshint": "^1.6.3",
     "gulp-less": "^1.2.3",
-    "gulp-livereload": "^2.1.0",
     "gulp-mocha": "^0.4.1",
+    "gulp-nodemon": "^1.0.4",
     "gulp-open": "^0.2.8",
-    "gulp-streamify": "0.0.5",
+    "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.0",
     "gulp-util": "^2.2.17",
     "jshint-stylish": "^0.2.0",
-    "mithril": "^0.1.16",
     "mocha": "^1.20.1",
+    "nodemon": "^1.2.1",
     "open": "0.0.5",
+    "reactify": "^0.17.1",
+    "should": "^4.3.0",
     "vinyl-source-stream": "^0.1.1",
-    "watchify": "^0.10.2"
+    "watchify": "^2.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^0.4.0",
+    "express": "^4.10.2",
+    "jade": "^1.7.0",
+    "morgan": "^1.5.0",
+    "react": "^0.12.0"
   }
 }
