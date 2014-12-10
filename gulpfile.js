@@ -6,6 +6,7 @@ var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
+var sourcemaps = require('gulp-sourcemaps');
 var less = require('gulp-less');
 var jsfmt = require('gulp-jsfmt');
 var nodemon = require('gulp-nodemon');
@@ -33,8 +34,7 @@ var config = {
     bundle: 'index.js',
     main: './src/frontend/index.jsx',
     scripts: './src/frontend/**/*.(js|jsx)',
-    styles: './src/frontend/**/*.less',
-    stylesDest: './dist/css',
+    styles: './src/frontend/index.less',
     images: './src/frontend/img/**/*',
     imagesDest: './dist/img',
     templates: './src/frontend/**/*.html',
@@ -56,7 +56,7 @@ gulp.task('clean', function () {
     .pipe(clean());
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['dist'], function () {
   gulp.watch(config.paths.templates, ['html']);
   gulp.watch(config.paths.tests, ['tests']);
   gulp.watch(config.paths.scripts, ['tests']);
@@ -145,8 +145,10 @@ gulp.task('clean-css', function () {
 
 gulp.task('less', ['clean-css'], function () {
   return gulp.src(config.paths.styles)
-    .pipe(less({ sourceMap: true }))
-    .pipe(gulp.dest(config.paths.stylesDest));
+    .pipe(sourcemaps.init())
+    .pipe(less())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.paths.dest));
 });
 
 gulp.task('fb-flo', function () {
