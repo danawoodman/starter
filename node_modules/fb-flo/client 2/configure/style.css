@@ -1,0 +1,334 @@
+html {
+    height: 100%;
+}
+
+body {
+  cursor: default;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  font-family: Lucida Grande, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  tab-size: 4;
+  -webkit-user-select: none;
+  color: #222;
+}
+
+body.platform-linux {
+  color: rgb(48, 57, 66);
+  font-family: Ubuntu, Arial, sans-serif;
+}
+
+body.platform-mac {
+  color: rgb(48, 57, 66);
+  font-family: 'Lucida Grande', sans-serif;
+}
+
+body.dock-to-right:not(.undocked):not(.overlay-contents) {
+    border-left: 1px solid rgb(80, 80, 80);
+}
+
+body.dock-to-right.inactive:not(.undocked):not(.overlay-contents) {
+    border-left: 1px solid rgb(64%, 64%, 64%);
+}
+
+body.platform-windows {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:focus {
+    outline: none;
+}
+
+img {
+    -webkit-user-drag: none;
+}
+
+iframe,
+a img {
+    border: none;
+}
+
+iframe.view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+nav {
+  flex: none;
+  flex-basis: 200px;
+  flex-direction: column;
+  display: flex !important;
+  border-right: 1px solid rgb(64%, 64%, 64%);
+  background-color: rgb(214, 221, 229);
+  overflow: auto;
+  overflow-x: hidden;
+  cursor: default;
+  position: relative;
+}
+
+ol {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav ol li.selected {
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.33) 1px 1px 0;
+  background-color: rgb(180,180,180);
+  background-color: rgb(56, 121, 217);
+}
+
+nav ol li {
+  position: relative;
+  height: 36px;
+  padding: 0 5px 0 7px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-top: 1px;
+  line-height: 34px;
+}
+
+nav ol li:first-child {
+  margin-top: 2px;
+}
+
+section.tab {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  overflow: auto;
+  cursor: default;
+  position: relative;
+  padding: 0 16px;
+  font-size: 13px;
+  display: none;
+}
+
+section.tab.selected {
+  display: flex;
+}
+
+section.tab > *{
+  flex-shrink: 0;
+}
+
+h1 {
+  color: rgb(110, 116, 128);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: normal;
+  margin-top: 0;
+  padding: 15px 0 10px;
+}
+
+.desc {
+  color: #808080;
+  padding: 0;
+  margin: 3px 0 15px;
+}
+
+select.hostnames {
+  min-width: 300px;
+  height: 100px;
+  font-size: 13px;
+}
+
+button {
+  font-size: 12px;
+  padding: 2px 20px;
+  height: 24px;
+  color: rgb(6, 6, 6);
+  border: 1px solid rgb(165, 165, 165);
+  background-color: rgb(237, 237, 237);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(252, 252, 252)), to(rgb(223, 223, 223)));
+  border-radius: 12px;
+  -webkit-appearance: none;
+}
+
+button:active {
+  background-color: rgb(215, 215, 215);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(194, 194, 194)), to(rgb(239, 239, 239)));
+}
+
+.hostnames-container {
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.hostnames-options {
+  overflow: hidden;
+}
+
+.hostnames-container button.add {
+  margin-left: 5px;
+  display:block;
+  margin-top: 10px;
+}
+.hostnames {
+  min-height: 115px;
+  max-height: 180px;
+  min-width: 300px;
+  max-width: 80%;
+  border: 1px;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin: 0;
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+.hostnames .item {
+  padding: 4px;
+  position: relative;
+  height: 30px;
+  margin-bottom: 5px;
+  line-height: 19px;
+  background: #FAFAFA;
+  border-radius: 4px;
+}
+
+.hostnames .item:last-child {
+  margin-bottom: 0;
+}
+
+.hostnames .item a {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  text-align: center;
+  line-height: 20px;
+  width: 30px;
+  line-height: 24px;
+  width: 30px;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.hostnames .item a:hover {
+  color: black;
+}
+
+.port-container {
+  clear: both;
+}
+
+input {
+  border: 1px solid #ddd;
+  font-size: 13px;
+  padding: 4px;
+}
+
+.status .indicator {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  background-color: red;
+  margin: 0 10px -3px 10px;
+}
+
+.status .indicator.connected,
+.status .indicator.started {
+  background-color: green;
+}
+
+.status .indicator.connecting {
+  background-color: orange;
+}
+
+.status .indicator.disabled {
+  background-color: gray;
+}
+
+.status .text {
+  line-height: 19px;
+}
+
+.status .action {
+  display: block;
+  margin-top: 13px;
+}
+
+.log-box {
+  min-height: 100px;
+  max-height: 180px;
+  min-width: 300px;
+  max-width: 80%;
+  border: 1px;
+  border: 1px solid #ddd;
+  padding: 8px;
+  margin: 0;
+  display: inline-block;
+  overflow-y: scroll;
+  margin-bottom: 15px;
+}
+
+.log-box .loglevel-error {
+  color: #FF0000;
+}
+
+.hostnames-options, .hostname-form {
+  float: left;
+}
+
+.hostname-form {
+  padding-left: 15px
+}
+
+.hostname-form input {
+  width: 165px;
+}
+
+.hostname-form div:nth-child(2) {
+  margin-top: 10px;
+}
+
+::-webkit-input-placeholder {
+   color: #6E7487;
+}
+
+input.red::-webkit-input-placeholder {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.report-bug {
+  font-size: 11px;
+}
