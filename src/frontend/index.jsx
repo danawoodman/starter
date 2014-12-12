@@ -1,23 +1,27 @@
-var React = require('react');
 var console = require('console');
-var CustomerList = require('./customers/list');
+var React = require('react');
+var Router = require('react-router');
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var NotFoundRoute = Router.NotFoundRoute;
+var App = require('./layout/app');
+var Customers = require('./customers/customers');
+var Customer = require('./customers/customer');
+var Dashboard = require('./dashboard');
+var NotFound = require('./404');
 
-console.log('Starting up application.');
+var routes = (
+  <Route name="app" handler={App} path="/">
+    <DefaultRoute handler={Dashboard} />
+    <Route path="/" name="dashboard" handler={Dashboard} />
+    <Route name="customers" handler={Customers}>
+      <Route path=":userID" name="customer" handler={Customer} />
+    </Route>
+    <NotFoundRoute handler={NotFound} />
+  </Route>
+);
+//<Redirect from="company" to="about" />
 
-var customers = [
-  { name: 'John Smith', phone: '(415) 555-3212' },
-  { name: 'Mary Lou', phone: '(415) 333-1234' }
-];
-
-var Application = React.createClass({
-  render: function () {
-    return (
-      <div className="container">
-        <h1 className="page-header">Customers:</h1>
-        <CustomerList customers={customers} />
-      </div>
-    );
-  }
+Router.run(routes, /*Router.HistoryLocation,*/ function (Handler) {
+  React.render(<Handler />, document.body);
 });
-
-React.render(<Application />, document.body);

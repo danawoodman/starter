@@ -1,18 +1,19 @@
 var React = require('react');
-
-var CustomerItem = React.createClass({
-  render: function () {
-    return (
-      <li><strong>{this.props.name}</strong> - {this.props.phone}</li>
-    );
-  }
-});
+var CustomerItem = require('./item');
 
 var CustomerList = React.createClass({
   render: function () {
-    var customers = this.props.customers.map(function (customer) {
-      return <CustomerItem name={customer.name} phone={customer.phone} />;
+    var customers = this.props.customers.map(function (customer, index) {
+      return <CustomerItem
+        key={index}
+        id={customer.id}
+        name={customer.name}
+        email={customer.email} />;
     });
+
+    if (!customers.length) {
+      return <div className="alert alert-warning">No customers...</div>;
+    }
 
     return <ul>{customers}</ul>;
   }
