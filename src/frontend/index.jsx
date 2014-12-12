@@ -14,9 +14,8 @@ var routes = (
   <Route name="app" handler={App} path="/">
     <DefaultRoute handler={Dashboard} />
     <Route path="/" name="dashboard" handler={Dashboard} />
-    <Route name="customers" handler={Customers}>
-      <Route path=":userID" name="customer" handler={Customer} />
-    </Route>
+    <Route name="customers" handler={Customers} />
+    <Route path="customers/:userID" name="customer" handler={Customer} />
     <NotFoundRoute handler={NotFound} />
   </Route>
 );
