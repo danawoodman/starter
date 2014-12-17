@@ -13,8 +13,9 @@ var Store = Reflux.createStore({
   },
 
   onCustomerCreate: function (customer) {
-    this.list.push(customer);
-    this.trigger(this.list);
+    client.post('/api/customers', customer, function (err, response, body) {
+      this.updateList(body);
+    }.bind(this));
   },
 
   updateList: function (list) {

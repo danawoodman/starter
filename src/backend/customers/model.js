@@ -20,6 +20,11 @@ var db = [
 var Model = {
   get: function () {
     return db;
+  },
+
+  create: function (customer) {
+    db.push(customer);
+    return db;
   }
 };
 
