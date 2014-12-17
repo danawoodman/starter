@@ -4,8 +4,8 @@ var rename = require('gulp-rename');
 var nodemon = require('gulp-nodemon');
 var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
+var exec = require('child_process').exec;
 var jshint = require('gulp-jshint');
-var mocha = require('gulp-mocha');
 var sourcemaps = require('gulp-sourcemaps');
 var less = require('gulp-less');
 var jsfmt = require('gulp-jsfmt');
@@ -33,12 +33,12 @@ var config = {
   paths: {
     bundle: 'index.js',
     main: './src/frontend/index.jsx',
-    scripts: './src/frontend/**/*.(js|jsx)',
+    scripts: './src/frontend/**/*.{js,jsx}',
     styles: './src/frontend/index.less',
     images: './src/frontend/img/**/*',
     imagesDest: './dist/img',
     templates: './src/frontend/**/*.html',
-    tests: './test/**/*.(js|jsx)',
+    tests: './test/**/*.{js,jsx}',
     dest: './dist',
   }
 };
@@ -128,9 +128,12 @@ gulp.task('fmt', function () {
  * Testing Tasks
  ********************************************************************************/
 
-gulp.task('test', function () {
-  return gulp.src(config.paths.tests)
-    .pipe(mocha({ reporter: 'nyan' }));
+gulp.task('test', function (done) {
+  exec('mocha', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    done(err);
+  });
 });
 
 
