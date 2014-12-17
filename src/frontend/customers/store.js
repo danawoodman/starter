@@ -12,6 +12,11 @@ var Store = Reflux.createStore({
     }.bind(this));
   },
 
+  onCustomerCreate: function (customer) {
+    this.list.push(customer);
+    this.trigger(this.list);
+  },
+
   updateList: function (list) {
     this.list = list;
     this.trigger(list);

@@ -1,5 +1,6 @@
 var React = require('react');
 var CustomerItem = require('./item');
+var Table = require('react-bootstrap').Table;
 
 var CustomerList = React.createClass({
   render: function () {
@@ -15,7 +16,19 @@ var CustomerList = React.createClass({
       return <div className="alert alert-warning">No customers...</div>;
     }
 
-    return <ul>{customers}</ul>;
+    return (
+      <Table bordered striped>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {customers}
+        </tbody>
+      </Table>
+    );
   }
 });
 

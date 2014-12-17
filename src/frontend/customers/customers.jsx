@@ -1,6 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var CustomerList = require('./list');
+var NewCustomerForm = require('./newCustomer.component');
 var CustomerStore = require('./store');
 var CustomerActions = require('./actions');
 
@@ -23,6 +24,7 @@ var Customers = React.createClass({
           onClick={this.onUpdateCustomers}>Fetch Customers</button>
         <h1 className="page-header">Customers:</h1>
         <CustomerList customers={this.state.customers} />
+        <NewCustomerForm />
       </div>
     );
   }
