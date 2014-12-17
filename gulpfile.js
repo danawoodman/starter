@@ -38,7 +38,7 @@ var config = {
     images: './src/frontend/img/**/*',
     imagesDest: './dist/img',
     templates: './src/frontend/**/*.html',
-    tests: './test/**/*.js',
+    tests: './test/**/*.(js|jsx)',
     dest: './dist',
   }
 };
