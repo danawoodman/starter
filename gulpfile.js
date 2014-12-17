@@ -38,7 +38,7 @@ var config = {
     images: './src/frontend/img/**/*',
     imagesDest: './dist/img',
     templates: './src/frontend/**/*.html',
-    tests: './spec/**/*.js',
+    tests: './test/**/*.js',
     dest: './dist',
   }
 };
@@ -58,8 +58,8 @@ gulp.task('clean', function () {
 
 gulp.task('watch', ['dist'], function () {
   gulp.watch(config.paths.templates, ['html']);
-  gulp.watch(config.paths.tests, ['tests']);
-  gulp.watch(config.paths.scripts, ['tests']);
+  gulp.watch(config.paths.tests, ['test']);
+  gulp.watch(config.paths.scripts, ['test']);
   gulp.watch(config.paths.styles, ['less']);
   gulp.watch(config.paths.images, ['images']);
   gulp.start('fb-flo');
@@ -128,7 +128,7 @@ gulp.task('fmt', function () {
  * Testing Tasks
  ********************************************************************************/
 
-gulp.task('tests', function () {
+gulp.task('test', function () {
   return gulp.src(config.paths.tests)
     .pipe(mocha({ reporter: 'nyan' }));
 });
@@ -197,7 +197,7 @@ gulp.task('serve', ['watch'], function () {
     //.on('start', ['watch'])
     //.on('change', ['watch'])
     .on('restart', function () {
-      console.log('restarted!');
+      console.log('Restarted node server!');
     });
 });
 

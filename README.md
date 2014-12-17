@@ -43,12 +43,15 @@ Try running `gulp watch` in one tab in your terminal program and then edit a LES
 
 _**Note:** You'll need to install the [fb-flo browser extension][fb-flo-extension] for fb-flo to work. Make sure to have developers tools open with the flo extension enabled or it won't work properly._
 
+## Testing
+
+This project uses [Mocha][mocha] test runner and [should.js][should] assertion library for writing tests. See the `spec` folder for examples of testing the frontend and backend codebases.
+
 
 ## TODO
 
 - Server rendering of React views
 - JSfmt
-- Boostrap
 - FontAwesome
 - WebPack/Ugilfy
 - Fontend/backend combo (Node.js, Express, bodyparser)
@@ -60,7 +63,7 @@ _**Note:** You'll need to install the [fb-flo browser extension][fb-flo-extensio
 
 ## Credits
 
-Built by [Dana Woodman][dana], founder of [BIG][big].
+Built by [Dana Woodman][dana] and the rest of the [BIG][big] team.
 
 Credit also goes to the authors of all the amazing tools used in this project. Without people like them, we'd still be in the dark ages of technology.
 
@@ -76,6 +79,8 @@ This source code is released under a liberal [MIT license][mit] (which means you
 [mit]: http://opensource.org/licenses/MIT
 [less]: http://lesscss.org/
 [node]: http://nodejs.org/
+[mocha]: http://mochajs.org/
+[should]: https://github.com/shouldjs/should.js
 [gulp]: http://gulpjs.com
 [fb-flo]: https://github.com/facebook/fb-flo
 [fb-flo-extension]: https://chrome.google.com/webstore/detail/ahkfhobdidabddlalamkkiafpipdfchp
