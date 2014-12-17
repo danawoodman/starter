@@ -1,0 +1,50 @@
+{
+  "name": "react-bootstrap",
+  "version": "0.13.0",
+  "description": "Bootstrap 3 components build with React",
+  "homepage": "http://react-bootstrap.github.io/",
+  "main": "main.js",
+  "keywords": [
+    "react",
+    "ecosystem-react",
+    "react-component",
+    "bootstrap"
+  ],
+  "author": {
+    "name": "Stephen J. Collings",
+    "email": "stevoland@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "react-bootstrap/react-bootstrap"
+  },
+  "bugs": {
+    "url": "https://github.com/react-bootstrap/react-bootstrap/issues"
+  },
+  "peerDependencies": {
+    "react": ">=0.12"
+  },
+  "gitHead": "f343f59c7a7605ba7de7e671b06a65bdbc28f211",
+  "_id": "react-bootstrap@0.13.0",
+  "scripts": {},
+  "_shasum": "b024b5706ef9413e8d8ac66fb3d1487f103d6ca6",
+  "_from": "react-bootstrap@*",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "stevoland",
+    "email": "stevoland@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "stevoland",
+      "email": "stevoland@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "b024b5706ef9413e8d8ac66fb3d1487f103d6ca6",
+    "tarball": "http://registry.npmjs.org/react-bootstrap/-/react-bootstrap-0.13.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-0.13.0.tgz"
+}
