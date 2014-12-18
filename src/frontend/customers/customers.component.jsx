@@ -1,6 +1,6 @@
 var React = require('react');
 var Reflux = require('reflux');
-var CustomerList = require('./list');
+var CustomerList = require('./list.component');
 var NewCustomerForm = require('./newCustomer.component');
 var CustomerStore = require('./store');
 var CustomerActions = require('./actions');
