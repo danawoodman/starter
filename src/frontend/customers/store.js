@@ -6,6 +6,10 @@ var client = request.newClient('http://localhost:1337/');
 var Store = Reflux.createStore({
   listenables: [require('./actions')],
 
+  init: function () {
+    this.onCustomerUpdate();
+  },
+
   onCustomerUpdate: function () {
     client.get('/api/customers', function (err, response, body) {
       this.updateList(body);
