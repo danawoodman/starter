@@ -22,6 +22,7 @@ var CustomerList = React.createClass({
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
