@@ -29,7 +29,7 @@ var Store = Reflux.createStore({
 
   getInitialState: function () {
     // TODO: fetch data from API...?
-    this.list = [];
+    this.list = this.list || [];
     return this.list;
   }
 });
