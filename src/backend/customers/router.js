@@ -1,6 +1,6 @@
 var express = require('express');
 var Router = express.Router();
-var Customers = require('./model.js');
+var Customers = require('./model');
 
 Router.get('/', function (req, res) {
   res.send(Customers.get());

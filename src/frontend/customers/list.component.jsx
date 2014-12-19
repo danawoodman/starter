@@ -9,7 +9,8 @@ var CustomerList = React.createClass({
         key={index}
         id={customer.id}
         name={customer.name}
-        email={customer.email} />;
+        email={customer.email}
+        saving={customer.saving} />;
     });
 
     if (!customers.length) {

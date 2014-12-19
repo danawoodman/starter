@@ -1,4 +1,5 @@
 var console = require('console');
+var io = require('socket.io-client');
 var React = require('react');
 var Router = require('react-router');
 var Route = Router.Route;
@@ -11,7 +12,6 @@ var Customer = require('./customers/customer.component');
 var CustomerSection = require('./customers/section.component');
 var Dashboard = require('./dashboard');
 var NotFound = require('./404');
-
 
 var routes = (
   <Route name="app" handler={App} path="/">
@@ -29,3 +29,5 @@ var routes = (
 Router.run(routes, /*Router.HistoryLocation,*/ function (Handler) {
   React.render(<Handler />, document.body);
 });
+
+var socket = io();

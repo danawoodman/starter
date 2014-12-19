@@ -6,7 +6,10 @@ var Customer = React.createClass({
 
   render: function () {
     return (
-      <h1>{this.getParams().userID}</h1>
+      <div>
+        <h1>Customer {this.getParams().userID}</h1>
+        <p>Put user info here...</p>
+      </div>
     );
   }
 });

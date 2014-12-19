@@ -1,7 +1,10 @@
 var path = require('path');
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser')
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var bodyParser = require('body-parser');
+var Customer = require('./customers/model');
 app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({
   //extended: true
@@ -18,17 +21,40 @@ var port = Number(process.env.PORT || 2000);
 var morgan = require('morgan');
 app.use(morgan('combined'));
 
-// Set template language
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 // Serve static assets
 app.use(express.static(path.join(__dirname, '../../dist')));
 
 // Mount routers
 app.use('/api/customers', customersRouter);
 
+io.on('connection', function (socket) {
+  console.log('a user connected');
+  io.emit('customers', Customer.get());
+
+  socket.on('disconnect', function () {
+    console.log('user disconnected');
+  });
+
+  socket.on('new customer', function (customer) {
+    console.log('new customer:', customer);
+
+    // TODO: Need to handle failures in saving.
+    var customers = Customer.create({
+      id: customer.id,
+      name: customer.name,
+      email: customer.email
+    });
+
+    io.emit('customers', customers);
+  });
+
+  socket.on('customers', function () {
+    console.log('retrieving list of customers');
+    io.emit('customers', Customer.get());
+  });
+});
+
 // Start server
-app.listen(port, function () {
+http.listen(port, function () {
   console.log('Server starting up on port', port);
 });
