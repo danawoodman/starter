@@ -2,7 +2,7 @@
   "name": "starter",
   "version": "0.0.0",
   "description": "Starter project for frontend development.",
-  "main": "src/index.js",
+  "main": "src/backend/server.js",
   "directories": {
     "test": "test"
   },
@@ -11,7 +11,7 @@
     "test": "gulp test",
     "watch": "gulp"
   },
-  "author": "Dana Woodman <dana@danawoodman.com> (http://danawoodman.com)",
+  "author": "BIG <http://builtbybig.com>",
   "license": "MIT",
   "browserify": {
     "transform": [
