@@ -5,7 +5,7 @@
   "authors": [
     "BIG <hello@builtbybig.com>"
   ],
-  "description": "Frontend starter application buil by BIG.",
+  "description": "Frontend starter application built by BIG.",
   "keywords": [
     "gulp",
     "node",
@@ -29,7 +29,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "src/frontend/vendor/"
   ],
   "dependencies": {
     "bootstrap": "~3.3.1"
