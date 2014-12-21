@@ -10,10 +10,19 @@ var CustomerItem = React.createClass({
   },
 
   render: function () {
+    // Show just the customer name if they're not persisted,
+    // otherwise link to the customer detail page.
+    var customerLink;
+    if (this.props.id) {
+      customerLink = <Link to="customer" params={{userID: this.props.id}}>{this.props.name}</Link>;
+    } else {
+      customerLink = this.props.name;
+    }
+
     return (
       <tr>
         <td>
-          <strong><Link to="customer" params={{userID: this.props.id}}>{this.props.name}</Link></strong> <span className="text-muted">{this.props.saving ? 'Saving...' : ''}</span>
+          <strong>{customerLink}</strong> <span className="text-muted">{this.props.saving ? 'Saving...' : ''}</span>
         </td>
         <td>
           <a href={'mailto:' + this.props.email}>{this.props.email}</a>
