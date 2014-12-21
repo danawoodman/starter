@@ -2,6 +2,7 @@
 
 Start project for frontend applications using:
 
+- **[Socket.io][socket-io]** - Feature rich, stable real-time WebSockets library.
 - **[React][react]** - One way view rendering framework by Facebook.
     - **[Reflux][reflux]** - A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux.
 - **[Browserify][browserify]** - Allows CommonJS (`require('module')` style) imports in your frontend JavaScript code.
@@ -90,3 +91,4 @@ This source code is released under a liberal [MIT license][mit] (which means you
 [fb-flo-extension]: https://chrome.google.com/webstore/detail/ahkfhobdidabddlalamkkiafpipdfchp
 [bootstrap]: http://getbootstrap.com
 [react-bootstrap]: http://react-bootstrap.github.io
+[socket-io]: http://socket.io/
