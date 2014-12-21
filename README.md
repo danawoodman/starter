@@ -3,16 +3,21 @@
 Start project for frontend applications using:
 
 - **[React][react]** - One way view rendering framework by Facebook.
-- **[Browserify][browserify]** - Allows `require('module')` style imports in your frontend JavaScript code.
+    - **[Reflux][reflux]** - A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux.
+- **[Browserify][browserify]** - Allows CommonJS (`require('module')` style) imports in your frontend JavaScript code.
 - **[Gulp][gulp]** - A lightning fast task runner.
 - **[LESS][less]** - A CSS preprocessor with variables, functions, and tons of utilities to make writing CSS suck less.
 - **[fb-flo][fb-flo]** for automatic reloading of your HTML, CSS and JavaScript code without refresh.
+- **[Mocha][mocha]** - JavaScript test runner.
+- **[Bower][bower]** - Front-end package management tool.
+- **[Bootstrap][bootstrap]** - Front-end user interface library.
+    - **[react-bootstrap][react-bootstrap]** - React components for common Bootstrap components.
 
 Running the gulp scripts (see below), allows you to do some other awesome things like:
 
-- Generate sourcemaps for you CSS and JavaScript
-- Automatically concatenate and minify your CSS and JavaScript
-- Run code linting on your JavaScript
+- Generate sourcemaps for you CSS and JavaScript.
+- Automatically concatenate and minify your CSS and JavaScript.
+- Run code linting on your JavaScript.
 - Automatically run your test suite on any changes (with an awesome test runner to boot!).
 
 
@@ -37,7 +42,7 @@ For local development, you'll most likely want to run the `watch` task:
 gulp watch # or just "gulp" which is an alias to "gulp watch"
 ```
 
-This will startup a webserver using [fb-flo][fb-flo], watch for changes to your JavaScript, HTML and LESS files and automatically rebuild them and run the Mocha test suite. It will open up the application in your default browser when you first run it to streamline the development process.
+This will startup a webserver using [fb-flo][fb-flo], watch for changes to your JavaScript, HTML and LESS files and automatically rebuild them and run the Mocha test suite.
 
 Try running `gulp watch` in one tab in your terminal program and then edit a LESS, HTML or JavaScript file and watch the page reload automatically. Sexy.
 
@@ -52,13 +57,9 @@ This project uses [Mocha][mocha] test runner and [should.js][should] assertion l
 
 - Server rendering of React views
 - JSfmt
-- FontAwesome
 - WebPack/Ugilfy
-- Fontend/backend combo (Node.js, Express, bodyparser)
 - Auth (passport)
-- Testing frontend/backend code
 - Procfile
-- Jade?
 
 
 ## Credits
@@ -74,6 +75,7 @@ This source code is released under a liberal [MIT license][mit] (which means you
 
 [browserify]: http://browserify.org/
 [react]: http://facebook.github.io/react/
+[reflux]: https://github.com/spoike/refluxjs
 [dana]: http://danawoodman.com/
 [big]: http://builtbybig.com/
 [mit]: http://opensource.org/licenses/MIT
@@ -83,4 +85,8 @@ This source code is released under a liberal [MIT license][mit] (which means you
 [should]: https://github.com/shouldjs/should.js
 [gulp]: http://gulpjs.com
 [fb-flo]: https://github.com/facebook/fb-flo
+[bower]: http://bower.io/
+[mocha]: http://mochajs.org/
 [fb-flo-extension]: https://chrome.google.com/webstore/detail/ahkfhobdidabddlalamkkiafpipdfchp
+[bootstrap]: http://getbootstrap.com
+[react-bootstrap]: http://react-bootstrap.github.io
