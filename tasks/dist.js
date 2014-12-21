@@ -1,3 +1,3 @@
 var gulp = require('gulp');
 
-gulp.task('dist', ['html', 'less', 'scripts', 'images']);
+gulp.task('dist', ['html', 'styles', 'scripts', 'images']);

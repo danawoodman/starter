@@ -46,11 +46,11 @@ function scripts(watch) {
   return rebundle();
 }
 
-gulp.task('scripts', ['clean-scripts'], function () {
+gulp.task('scripts', function () {
   return scripts(false);
 });
 
-gulp.task('watch-scripts', ['clean-scripts'], function () {
+gulp.task('watch-scripts', function () {
   return scripts(true);
 });
 

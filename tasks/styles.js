@@ -4,12 +4,12 @@ var sourcemaps = require('gulp-sourcemaps');
 var less = require('gulp-less');
 var config = require('./config');
 
-gulp.task('clean-css', function (done) {
+gulp.task('clean-styles', function (done) {
   del([config.paths.dest + '/**/*.css'], done);
 });
 
-gulp.task('less', ['clean-css'], function () {
-  return gulp.src(config.paths.styles)
+gulp.task('styles', function () {
+  return gulp.src(config.paths.baseStylePath)
     .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(sourcemaps.write())
