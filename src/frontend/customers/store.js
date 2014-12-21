@@ -11,7 +11,7 @@ var Store = Reflux.createStore({
   init: function () {
     // Fetch customers on initial load.
     console.log('Initialize customer store.');
-    socket.on('customers', this.updateList.bind(this));
+    socket.on('read customers', this.updateList.bind(this));
   },
 
   onCustomerUpdate: function () {
@@ -19,7 +19,7 @@ var Store = Reflux.createStore({
       //this.updateList(body);
     //}.bind(this));
     // Tell the socket we want to update the customers list.
-    socket.emit('customers');
+    socket.emit('read customers');
   },
 
   onCustomerCreate: function (customer) {
@@ -36,9 +36,7 @@ var Store = Reflux.createStore({
 
   onCustomerDelete: function (id) {
     console.log('delete customer:', id);
-    //client.del('/api/customers/' + id, function (err, response, body) {
-      //this.updateList(body);
-    //});
+    socket.emit('delete customer', id);
   },
 
   updateList: function (list) {

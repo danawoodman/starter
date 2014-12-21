@@ -7,13 +7,13 @@ var Component = React.createClass({
   onSubmit: function (e) {
     e.preventDefault();
 
+    // Trigger the creat customer action.
     CustomerActions.customerCreate({
-      id: 32,
       name: this.refs.name.getValue().trim(),
       email: this.refs.email.getValue().trim()
     });
 
-    console.log(this.refs);
+    // Clear out the form.
     this.refs.name.getInputDOMNode().value = '';
     this.refs.email.getInputDOMNode().value = '';
 

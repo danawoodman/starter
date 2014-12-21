@@ -4,7 +4,7 @@ var FontAwesome = require('../font-awesome/index');
 var CustomerActions = require('./actions');
 
 var CustomerItem = React.createClass({
-  onRemoveCustomer: function (e) {
+  onDeleteCustomer: function (e) {
     e.preventDefault();
     CustomerActions.customerDelete(this.props.id);
   },
@@ -19,7 +19,9 @@ var CustomerItem = React.createClass({
           <a href={'mailto:' + this.props.email}>{this.props.email}</a>
         </td>
         <td>
-          <a href="#" onClick={this.onRemoveCustomer}><FontAwesome icon="remove"  /></a>
+          <a href="#" className="text-danger" onClick={this.onDeleteCustomer}>
+            <FontAwesome icon="remove"  />
+          </a>
         </td>
       </tr>
     );

@@ -29,7 +29,7 @@ app.use('/api/customers', customersRouter);
 
 io.on('connection', function (socket) {
   console.log('a user connected');
-  io.emit('customers', Customer.get());
+  io.emit('read customers', Customer.get());
 
   socket.on('disconnect', function () {
     console.log('user disconnected');
@@ -45,12 +45,17 @@ io.on('connection', function (socket) {
       email: customer.email
     });
 
-    io.emit('customers', customers);
+    io.emit('read customers', customers);
   });
 
-  socket.on('customers', function () {
+  socket.on('delete customer', function (id) {
+    var customers = Customer.destroy(id);
+    io.emit('read customers', customers);
+  });
+
+  socket.on('read customers', function () {
     console.log('retrieving list of customers');
-    io.emit('customers', Customer.get());
+    io.emit('read customers', Customer.get());
   });
 });
 
