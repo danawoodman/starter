@@ -1,9 +1,9 @@
 var Reflux = require('reflux');
 var io = require('socket.io-client');
+var socket = io();
 var console = require('console');
 var request = require('request-json');
 var client = request.newClient('http://localhost:1337/');
-var socket = io();
 
 var Store = Reflux.createStore({
   listenables: [require('./actions')],

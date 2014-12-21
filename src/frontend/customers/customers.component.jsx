@@ -5,7 +5,7 @@ var NewCustomerForm = require('./newCustomer.component');
 var CustomerStore = require('./store');
 var CustomerActions = require('./actions');
 
-var Customers = React.createClass({
+var Component = React.createClass({
   mixins: [Reflux.connect(CustomerStore, 'customers')],
 
   propTypes: {
@@ -30,4 +30,4 @@ var Customers = React.createClass({
   }
 });
 
-module.exports = Customers;
+module.exports = Component;
