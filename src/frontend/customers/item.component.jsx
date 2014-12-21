@@ -1,15 +1,50 @@
 var React = require('react');
 var Link = require('react-router').Link;
+var Button = require('react-bootstrap').Button;
+var ButtonGroup = require('react-bootstrap').ButtonGroup;
 var FontAwesome = require('../font-awesome/index');
 var CustomerActions = require('./actions');
+var EditModal = require('./edit.component');
 
-var CustomerItem = React.createClass({
+var Component = React.createClass({
+  getInitialState: function () {
+    return {
+      editing: false
+    };
+  },
+
   onDeleteCustomer: function (e) {
     e.preventDefault();
     CustomerActions.customerDelete(this.props.id);
   },
 
+  onEditCustomer: function () {
+    console.log('Edit customer');
+    this.setState({ editing: true });
+  },
+
+  onCancelEditing: function (e) {
+    console.log('Cancel editing customer');
+    this.setState({ editing: false });
+  },
+
+  onUpdateCustomer: function (e) {
+    e.preventDefault();
+    alert('update customer: ' + this.props.name);
+    this.setState({ editing: false });
+    return;
+  },
+
   render: function () {
+    // If the user is editing the customer, then we
+    // show the edit modal.
+    var editModal;
+    if (this.state.editing) {
+      editModal = (
+        <EditModal {...this.props} onSubmit={this.onUpdateCustomer} onClose={this.onCancelEditing} />
+      );
+    }
+
     // Show just the customer name if they're not persisted,
     // otherwise link to the customer detail page.
     var customerLink;
@@ -28,13 +63,19 @@ var CustomerItem = React.createClass({
           <a href={'mailto:' + this.props.email}>{this.props.email}</a>
         </td>
         <td>
-          <a href="#" className="text-danger" onClick={this.onDeleteCustomer}>
-            <FontAwesome icon="remove"  />
-          </a>
+          {editModal}
+          <ButtonGroup bsSize="small">
+            <Button onClick={this.onEditCustomer}>
+              <FontAwesome icon="pencil" />
+            </Button>
+            <Button bsStyle="danger" onClick={this.onDeleteCustomer}>
+              <FontAwesome icon="remove" />
+            </Button>
+          </ButtonGroup>
         </td>
       </tr>
     );
   }
 });
 
-module.exports = CustomerItem;
+module.exports = Component;
