@@ -16,7 +16,7 @@ var Component = React.createClass({
 
   render: function () {
     var className = this.props.className;
-    className += this.state.status === 'connected' ? ' text-muted' : ' text-danger';
+    className += this.state.status === 'connected' ? ' connected' : ' disconnected';
 
     return (
       <p className={className}>{capitalize(this.state.status)}</p>

@@ -2,7 +2,7 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 var RouteHandler = Router.RouteHandler;
-var ConnectionStatus = require('../connection-status/status');
+var ConnectionStatus = require('../connection-status/component');
 var Navbar = require('react-bootstrap').Navbar;
 var Nav = require('react-bootstrap').Nav;
 //var NavItem = require('react-bootstrap').NavItem;
@@ -18,7 +18,7 @@ var App = React.createClass({
             <li><Link to="dashboard">Dashboard</Link></li>
             <li><Link to="customers">Customers</Link></li>
           </Nav>
-          <ConnectionStatus className="navbar-text navbar-right" />
+          <ConnectionStatus className="connection-status navbar-text navbar-right" />
         </Navbar>
         <RouteHandler/>
       </div>
