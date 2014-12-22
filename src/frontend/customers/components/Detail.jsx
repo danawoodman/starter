@@ -4,6 +4,8 @@ var Router = require('react-router');
 var Customer = React.createClass({
   mixins: [Router.State],
 
+  // TODO: lookup customer in store and retrieve/display data.
+
   render: function () {
     return (
       <div>

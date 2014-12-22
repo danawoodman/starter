@@ -2,9 +2,9 @@ var React = require('react');
 var Link = require('react-router').Link;
 var Button = require('react-bootstrap').Button;
 var ButtonGroup = require('react-bootstrap').ButtonGroup;
-var FontAwesome = require('../font-awesome/index');
-var CustomerActions = require('./actions');
-var EditModal = require('./edit.component');
+var FontAwesome = require('../../font-awesome/index');
+var CustomerActions = require('../actions');
+var EditModal = require('./EditForm');
 
 var Component = React.createClass({
   getInitialState: function () {

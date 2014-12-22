@@ -1,7 +1,7 @@
 var React = require('react');
-var CustomerActions = require('./actions');
 var Input = require('react-bootstrap').Input;
 var Panel = require('react-bootstrap').Panel;
+var CustomerActions = require('../actions');
 
 var Component = React.createClass({
   onSubmit: function (e) {

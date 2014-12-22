@@ -1,9 +1,9 @@
 var React = require('react');
 var Reflux = require('reflux');
-var CustomerList = require('./list.component');
-var NewCustomerForm = require('./newCustomer.component');
-var CustomerStore = require('./store');
-var CustomerActions = require('./actions');
+var CustomerStore = require('../store');
+var CustomerActions = require('../actions');
+var CustomerList = require('./List');
+var NewCustomerForm = require('./NewForm');
 
 var Component = React.createClass({
   mixins: [Reflux.connect(CustomerStore, 'customers')],

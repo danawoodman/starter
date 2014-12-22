@@ -7,9 +7,9 @@ var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 var App = require('./layout/app');
-var Customers = require('./customers/customers.component');
-var Customer = require('./customers/customer.component');
-var CustomerSection = require('./customers/section.component');
+var Customers = require('./customers/components/Customers');
+var CustomerDetail = require('./customers/components/Detail');
+var CustomerSection = require('./customers/components/Section');
 var Dashboard = require('./dashboard');
 var NotFound = require('./404');
 
@@ -18,7 +18,7 @@ var routes = (
     <DefaultRoute handler={Dashboard} />
     <Route path="/" name="dashboard" handler={Dashboard} />
     <Route name="customers" handler={CustomerSection}>
-      <Route path=":userID" name="customer" handler={Customer} />
+      <Route path=":userID" name="customer" handler={CustomerDetail} />
       <DefaultRoute handler={Customers} />
     </Route>
     <NotFoundRoute handler={NotFound} />

@@ -1,6 +1,6 @@
 var React = require('react');
-var CustomerItem = require('./item.component');
 var Table = require('react-bootstrap').Table;
+var CustomerItem = require('./ListItem');
 
 var CustomerList = React.createClass({
   render: function () {
