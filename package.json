@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "gulp serve",
+    "start": "node src/backend/server.js",
     "test": "gulp test",
     "watch": "gulp"
   },
