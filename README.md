@@ -57,11 +57,11 @@ This project uses [Mocha][mocha] test runner and [should.js][should] assertion l
 ## TODO
 
 - Server rendering of React views
-- [] JSfmt
-- [] WebPack/Ugilfy
-- [] Auth (passport)
-- [] Procfile
-- [] Model/form validation
+- [ ] JSfmt
+- [ ] WebPack/Ugilfy
+- [ ] Auth (passport)
+- [ ] Procfile
+- [ ] Model/form validation
 
 
 ## Credits
