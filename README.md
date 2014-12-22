@@ -56,12 +56,15 @@ This project uses [Mocha][mocha] test runner and [should.js][should] assertion l
 
 ## TODO
 
-- Server rendering of React views
+- [ ] Model/form validation (https://github.com/insin/newforms ?)
+- [ ] Griddle tables
+- [ ] Jest test suite
+- [ ] Login component
 - [ ] JSfmt
 - [ ] WebPack/Ugilfy
 - [ ] Auth (passport)
 - [ ] Procfile
-- [ ] Model/form validation
+- [ ] Server rendering of React views
 
 
 ## Credits
