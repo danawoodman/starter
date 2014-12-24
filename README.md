@@ -21,6 +21,10 @@ Running the gulp scripts (see below), allows you to do some other awesome things
 - Run code linting on your JavaScript.
 - Automatically run your test suite on any changes (with an awesome test runner to boot!).
 
+## Screenshots
+
+Customer listing:
+![screen](http://cl.ly/Z5ON/Screen%20Shot%202014-12-23%20at%208.46.45%20PM.png)
 
 ## Setup
 
