@@ -15,7 +15,6 @@ var Component = React.createClass({
       email: this.refs.email.getValue().trim()
     });
 
-    CreateStateActions.close();
 
     // Clear out the form.
     this.refs.name.getInputDOMNode().value = '';
@@ -57,6 +56,7 @@ var Component = React.createClass({
               onClick={this.onClose}>
               Close</Button>
             <Button
+              type="submit"
               bsStyle="success"
               onClick={this.onSubmit}>
               Save changes</Button>

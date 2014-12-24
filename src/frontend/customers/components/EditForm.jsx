@@ -75,6 +75,7 @@ var Component = React.createClass({
               onClick={this.onClose}>
               Close</Button>
             <Button
+              type="submit"
               bsStyle="success"
               onClick={this.onSubmit}>
               Save Changes</Button>
