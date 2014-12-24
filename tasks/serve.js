@@ -4,6 +4,7 @@ var config = require('./config');
 
 gulp.task('serve', ['dist'], function () {
   nodemon({
+    ignore: ['./dist'],
     script: config.paths.server,
     ext: 'js',
     env: {
