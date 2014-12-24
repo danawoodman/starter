@@ -2,16 +2,36 @@ var Reflux = require('reflux');
 var io = require('socket.io-client');
 var socket = io();
 var console = require('console');
-var request = require('request-json');
-var client = request.newClient('http://localhost:1337/');
+var CreateStateActions = require('./actions').CreateState;
 
-var Store = Reflux.createStore({
-  listenables: [require('./actions')],
+var CreateState = Reflux.createStore({
+  listenables: [require('./actions').CreateState],
+
+  getInitialState: function () {
+    return false;
+  },
+
+  onOpen: function () {
+    this.trigger(true);
+  },
+
+  onClose: function () {
+    this.trigger(false);
+  }
+});
+
+var Customers = Reflux.createStore({
+  listenables: [require('./actions').Customers],
 
   init: function () {
     // Fetch customers on initial load.
     console.log('Initialize customer store.');
     socket.on('read customers', this.updateList.bind(this));
+  },
+
+  getInitialState: function () {
+    this.list = this.list || [];
+    return this.list;
   },
 
   // Indicate the given customer is being edited in the UI.
@@ -86,6 +106,9 @@ var Store = Reflux.createStore({
           }
         });
 
+        // Close the create dialog when save succeeds.
+        CreateStateActions.close();
+
         this.updateList(this.list);
 
         console.log('\tCreate customer', customer);
@@ -124,13 +147,10 @@ var Store = Reflux.createStore({
     });
 
     this.updateList(this.list);
-  },
-
-  getInitialState: function () {
-    // TODO: fetch data from API...?
-    this.list = this.list || [];
-    return this.list;
   }
 });
 
-module.exports = Store;
+module.exports = {
+  CreateState: CreateState,
+  Customers: Customers
+};

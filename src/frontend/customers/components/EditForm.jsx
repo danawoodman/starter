@@ -2,7 +2,7 @@ var React = require('react');
 var Modal = require('react-bootstrap').Modal;
 var Button = require('react-bootstrap').Button;
 var Input = require('react-bootstrap').Input;
-var CustomerActions = require('../actions');
+var CustomerActions = require('../actions').Customers;
 
 var Component = React.createClass({
   getInitialState: function () {
@@ -26,19 +26,15 @@ var Component = React.createClass({
     return;
   },
 
-  onSave: function (e) {
-    e.preventDefault();
-
+  onSubmit: function (e) {
+    if (e) { e.preventDefault(); }
     console.log('Update customer:', this.state);
-
     CustomerActions.update(this.state);
   },
 
   onClose: function (e) {
-    e.preventDefault();
-
+    if (e) { e.preventDefault(); }
     console.log('Cancel editing customer:', this.state.name);
-
     CustomerActions.stopEditing(this.props.id);
   },
 
@@ -56,27 +52,34 @@ var Component = React.createClass({
     return (
       <Modal
         title={title}
-        backdrop={false}
+        backdrop={true}
         animation={false}
         onRequestHide={this.onClose}>
-        <div className="modal-body">
-          <Input
-            type="text"
-            value={this.state.name}
-            placeholder="Full name..."
-            label="Full Name"
-            onChange={this.handleChangeName} />
-          <Input
-            type="email"
-            value={this.state.email}
-            placeholder="Email address..."
-            label="Email"
-            onChange={this.handleChangeEmail} />
-        </div>
-        <div className="modal-footer">
-          <Button onClick={this.onClose}>Close</Button>
-          <Button bsStyle="primary" onClick={this.onSave}>Save changes</Button>
-        </div>
+        <form onSubmit={this.onSubmit}>
+          <div className="modal-body">
+            <Input
+              type="text"
+              value={this.state.name}
+              placeholder="Full name..."
+              label="Full Name"
+              onChange={this.handleChangeName} />
+            <Input
+              type="email"
+              value={this.state.email}
+              placeholder="Email address..."
+              label="Email"
+              onChange={this.handleChangeEmail} />
+          </div>
+          <div className="modal-footer">
+            <Button
+              onClick={this.onClose}>
+              Close</Button>
+            <Button
+              bsStyle="success"
+              onClick={this.onSubmit}>
+              Save Changes</Button>
+          </div>
+        </form>
       </Modal>
     );
   }

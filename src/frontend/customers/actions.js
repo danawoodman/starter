@@ -1,6 +1,6 @@
 var Reflux = require('reflux');
 
-var Actions = Reflux.createActions([
+var Customers = Reflux.createActions([
   'edit',
   'stopEditing',
   'update',
@@ -8,4 +8,12 @@ var Actions = Reflux.createActions([
   'destroy'
 ]);
 
-module.exports = Actions;
+var CreateState = Reflux.createActions([
+  'open',
+  'close'
+]);
+
+module.exports = {
+  CreateState: CreateState,
+  Customers: Customers
+};
