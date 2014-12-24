@@ -7,41 +7,24 @@ var CustomerActions = require('../actions');
 var EditModal = require('./EditForm');
 
 var Component = React.createClass({
-  getInitialState: function () {
-    return {
-      editing: false
-    };
-  },
-
   onDeleteCustomer: function (e) {
     e.preventDefault();
-    CustomerActions.customerDelete(this.props.id);
+    CustomerActions.destroy(this.props.id, function (err, message) {
+      console.log('delete customer', err, message);
+    });
   },
 
   onEditCustomer: function () {
-    console.log('Edit customer');
-    this.setState({ editing: true });
-  },
-
-  onCancelEditing: function (e) {
-    console.log('Cancel editing customer');
-    this.setState({ editing: false });
-  },
-
-  onUpdateCustomer: function (e) {
-    e.preventDefault();
-    alert('update customer: ' + this.props.name);
-    this.setState({ editing: false });
-    return;
+    CustomerActions.edit(this.props.id);
   },
 
   render: function () {
     // If the user is editing the customer, then we
     // show the edit modal.
     var editModal;
-    if (this.state.editing) {
+    if (this.props.editing) {
       editModal = (
-        <EditModal {...this.props} onSubmit={this.onUpdateCustomer} onClose={this.onCancelEditing} />
+        <EditModal {...this.props} />
       );
     }
 

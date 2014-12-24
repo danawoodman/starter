@@ -32,22 +32,52 @@ io.on('connection', function (socket) {
     console.log('user disconnected');
   });
 
-  socket.on('new customer', function (customer) {
+  socket.on('new customer', function (customer, callback) {
     console.log('new customer:', customer);
 
     // TODO: Need to handle failures in saving.
-    var customers = Customer.create({
-      id: customer.id,
+    var customer = Customer.create({
       name: customer.name,
       email: customer.email
     });
 
-    io.emit('read customers', customers);
+    var err;
+
+    if (err) {
+      console.error('There was an error!', err);
+      callback(err, null);
+      return;
+    }
+
+    callback(null, customer);
   });
 
-  socket.on('delete customer', function (id) {
-    var customers = Customer.destroy(id);
-    io.emit('read customers', customers);
+  socket.on('update customer', function (customer, callback) {
+    console.log('update customer:', customer);
+
+    var err = Customer.update(customer);
+
+    if (err) {
+      console.error('There was an error!', err);
+      callback(err, null);
+      return;
+    }
+
+    callback(null, 'Success!');
+  });
+
+  socket.on('delete customer', function (id, callback) {
+    console.log('delete customer:', id);
+
+    var err = Customer.destroy(id);
+
+    if (err) {
+      console.error('There was an error!', err);
+      callback(err, null);
+      return;
+    }
+
+    callback(null, 'Success!');
   });
 
   socket.on('read customers', function () {

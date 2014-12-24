@@ -13,7 +13,7 @@ var App = React.createClass({
 
     return (
       <div className="container">
-        <Navbar brand={brand} fixedTop="true">
+        <Navbar brand={brand} fixedTop={true}>
           <Nav>
             <li><Link to="dashboard">Dashboard</Link></li>
             <li><Link to="customers">Customers</Link></li>

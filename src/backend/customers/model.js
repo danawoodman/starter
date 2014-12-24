@@ -33,7 +33,21 @@ var Model = {
 
     console.log('\tNew number of customers:', db.length);
 
-    return db;
+    return customer;
+  },
+
+  update: function (customer) {
+    console.log('Update customer:', customer);
+
+    db = db.map(function (cust) {
+      if (cust.id === customer.id) {
+        // Only update valid properties.
+        cust.name = customer.name;
+        cust.email = customer.email;
+        console.log('\tCustomer matches!', cust);
+      }
+      return cust;
+    });
   },
 
   destroy: function (id) {
@@ -45,8 +59,6 @@ var Model = {
     });
 
     console.log('\tNew number of customers:', db.length);
-
-    return db;
   }
 };
 

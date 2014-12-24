@@ -10,6 +10,7 @@ var CustomerList = React.createClass({
         id={customer.id}
         name={customer.name}
         email={customer.email}
+        editing={customer.editing}
         saving={customer.saving} />;
     });
 

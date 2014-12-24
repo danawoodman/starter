@@ -14,15 +14,51 @@ var Store = Reflux.createStore({
     socket.on('read customers', this.updateList.bind(this));
   },
 
-  onCustomerUpdate: function () {
-    //client.get('/api/customers', function (err, response, body) {
-      //this.updateList(body);
-    //}.bind(this));
-    // Tell the socket we want to update the customers list.
-    socket.emit('read customers');
+  // Indicate the given customer is being edited in the UI.
+  onEdit: function (id) {
+    this.updateWithID(id, function (customer) {
+        customer.editing = true;
+        return customer;
+    });
   },
 
-  onCustomerCreate: function (customer) {
+  onStopEditing: function (id) {
+    this.updateWithID(id, function (customer) {
+        customer.editing = false;
+        return customer;
+    });
+  },
+
+  onUpdate: function (customer) {
+    // Tell the socket we want to update the customers list.
+    customer.saving = true;
+
+    console.log('Preparing to update customer', customer);
+
+    socket.emit(
+      'update customer',
+      customer,
+      function (err, message) {
+        console.log('\tUpdate customer returned', customer, err, message);
+
+        if (err) {
+          // TODO: Handle errors...
+        }
+
+        this.updateWithID(customer.id, function (cust, index, arr) {
+          cust = customer;
+          cust.saving = false;
+          cust.editing = false;
+          arr[index] = cust;
+          console.log('\tUpdated customer:', cust);
+        });
+      }.bind(this)
+    );
+  },
+
+  onCreate: function (customer) {
+    console.log('Create customer:', customer);
+
     // Immediately display the customer with
     // a loading message while we wait for the
     // server.
@@ -31,17 +67,63 @@ var Store = Reflux.createStore({
     this.updateList(this.list);
 
     // Tell the server to save the customer.
-    socket.emit('new customer', customer);
+    socket.emit(
+      'new customer',
+      customer,
+      function (err, newCustomer) {
+        if (err) {
+          // TODO: Handle errors...
+        }
+
+        console.log('\tNew customer returned', customer, err, newCustomer);
+
+        this.list.forEach(function (cust, index, arr) {
+          if (cust === customer) {
+            console.log('\tUpdating existing customer', cust, 'with', customer);
+            newCustomer.saving = false;
+            newCustomer.editing = false;
+            arr[index] = newCustomer;
+          }
+        });
+
+        this.updateList(this.list);
+
+        console.log('\tCreate customer', customer);
+      }.bind(this)
+    );
   },
 
-  onCustomerDelete: function (id) {
-    console.log('delete customer:', id);
-    socket.emit('delete customer', id);
+  onDestroy: function (id) {
+    console.log('destroy customer:', id);
+
+    socket.emit(
+      'delete customer',
+      id,
+      function (err, message) {
+        if (err) {
+          // TODO: Handle errors...
+        }
+
+        this.updateWithID(id, function (cust, index, arr) {
+          arr.splice(index, 1);
+        });
+      }.bind(this)
+    );
   },
 
   updateList: function (list) {
     this.list = list;
     this.trigger(list);
+  },
+
+  updateWithID: function (id, callback) {
+    this.list.forEach(function (customer, index, arr) {
+      if (customer.id === id) {
+        callback(customer, index, arr);
+      }
+    });
+
+    this.updateList(this.list);
   },
 
   getInitialState: function () {

@@ -8,7 +8,7 @@ var Component = React.createClass({
     e.preventDefault();
 
     // Trigger the creat customer action.
-    CustomerActions.customerCreate({
+    CustomerActions.create({
       name: this.refs.name.getValue().trim(),
       email: this.refs.email.getValue().trim()
     });
