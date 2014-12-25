@@ -20,22 +20,10 @@ var Component = React.createClass({
     });
   },
 
-  onHide: function (e) {
-    e.preventDefault();
-    alert('hide!');
-    return;
-  },
-
   onSubmit: function (e) {
     if (e) { e.preventDefault(); }
     console.log('Update customer:', this.state);
     CustomerActions.update(this.state);
-  },
-
-  onClose: function (e) {
-    if (e) { e.preventDefault(); }
-    console.log('Cancel editing customer:', this.state.name);
-    CustomerActions.stopEditing(this.props.id);
   },
 
   handleChangeName: function (e) {
@@ -52,9 +40,8 @@ var Component = React.createClass({
     return (
       <Modal
         title={title}
-        backdrop={true}
         animation={false}
-        onRequestHide={this.onClose}>
+        onRequestHide={this.props.onRequestHide}>
         <form onSubmit={this.onSubmit}>
           <div className="modal-body">
             <Input
@@ -62,6 +49,7 @@ var Component = React.createClass({
               value={this.state.name}
               placeholder="Full name..."
               label="Full Name"
+              autofocus
               onChange={this.handleChangeName} />
             <Input
               type="email"
@@ -72,7 +60,7 @@ var Component = React.createClass({
           </div>
           <div className="modal-footer">
             <Button
-              onClick={this.onClose}>
+              onClick={this.props.onRequestHide}>
               Close</Button>
             <Button
               type="submit"

@@ -2,7 +2,7 @@ var React = require('react');
 var Table = require('react-bootstrap').Table;
 var CustomerItem = require('./ListItem');
 
-var CustomerList = React.createClass({
+var Component = React.createClass({
   render: function () {
     var customers = this.props.customers.map(function (customer, index) {
       return <CustomerItem
@@ -35,4 +35,4 @@ var CustomerList = React.createClass({
   }
 });
 
-module.exports = CustomerList;
+module.exports = Component;
