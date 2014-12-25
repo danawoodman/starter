@@ -7,7 +7,7 @@ var CreateStateActions = require('../actions').CreateState;
 
 var Component = React.createClass({
   onSubmit: function (e) {
-    if (e) { e.preventDefault(); }
+    e.preventDefault();
 
     // Trigger the creat customer action.
     CustomerActions.create({
@@ -15,17 +15,9 @@ var Component = React.createClass({
       email: this.refs.email.getValue().trim()
     });
 
-
     // Clear out the form.
     this.refs.name.getInputDOMNode().value = '';
     this.refs.email.getInputDOMNode().value = '';
-
-    return;
-  },
-
-  onClose: function (e) {
-    if (e) { e.preventDefault(); }
-    CreateStateActions.close();
   },
 
   render: function () {
@@ -34,9 +26,8 @@ var Component = React.createClass({
     return (
       <Modal
         title={title}
-        backdrop={true}
         animation={false}
-        onRequestHide={this.onClose}>
+        onRequestHide={this.props.onRequestHide}>
         <form onSubmit={this.onSubmit}>
           <div className="modal-body">
             <Input
@@ -53,7 +44,7 @@ var Component = React.createClass({
           </div>
           <div className="modal-footer">
             <Button
-              onClick={this.onClose}>
+              onClick={this.props.onRequestHide}>
               Close</Button>
             <Button
               type="submit"

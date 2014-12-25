@@ -1,6 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var Button = require('react-bootstrap').Button;
+var OverlayMixin = require('react-bootstrap').OverlayMixin;
 var CustomerList = require('./List');
 var NewCustomerForm = require('./NewForm');
 var CustomersStore = require('../store').Customers;
@@ -9,6 +10,7 @@ var CreateStateActions = require('../actions').CreateState;
 
 var Component = React.createClass({
   mixins: [
+    OverlayMixin,
     Reflux.connect(CustomersStore, 'customers'),
     Reflux.connect(CreateStateStore, 'showNewCustomerForm')
   ],
@@ -22,11 +24,22 @@ var Component = React.createClass({
     CreateStateActions.open();
   },
 
-  render: function () {
-    var showNewCustomerForm;
-    if (this.state.showNewCustomerForm) {
-      showNewCustomerForm = <NewCustomerForm />;
+  onRequestHide: function () {
+    CreateStateActions.close();
+  },
+
+  renderOverlay: function () {
+    if (!this.state.showNewCustomerForm) {
+      return <span />;
     }
+
+    return (
+      <NewCustomerForm
+        onRequestHide={this.onRequestHide} />
+    );
+  },
+
+  render: function () {
 
     return (
       <div className="page">
@@ -38,7 +51,6 @@ var Component = React.createClass({
         </Button>
         <h1 className="page-header">Customers:</h1>
         <CustomerList customers={this.state.customers} />
-        {showNewCustomerForm}
       </div>
     );
   }
