@@ -8,7 +8,9 @@ var server = flo(
     host: 'localhost',
     verbose: false,
     glob: [
-      '**/*.{js,css,html}',
+      '**/*.js',
+      '**/*.css',
+      '**/*.html',
     ]
   },
   function resolver(filepath, callback) {

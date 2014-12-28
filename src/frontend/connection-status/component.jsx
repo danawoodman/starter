@@ -1,7 +1,5 @@
 var React = require('react');
 var Reflux = require('reflux');
-var io = require('socket.io-client');
-var socket = io();
 var capitalize = require('capitalize');
 var ConnectionStatusStore = require('./store');
 //var ConnectionStatusActions = require('./actions');

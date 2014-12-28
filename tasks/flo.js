@@ -19,8 +19,11 @@ gulp.task('fb-flo', function (done) {
     './dist', {
       port: 8888,
       host: 'localhost',
-      verbose: 1,
-      glob: ['**/*', '!**/*.tmp']
+      verbose: false,
+      glob: [
+        '**/*.{js,css,html}',
+        '!**/*.{tmp,log,jpg,png,gif}'
+      ]
     },
     resolver
   )
@@ -36,9 +39,9 @@ function resolver(filepath, callback) {
     resourceURL: filepath,
     contents: fs.readFileSync(file),
     update: function (_window, _resourceURL) {
-      console.log("Resource " + _resourceURL + " has just been updated with new content");
+      console.log('Resource ' + _resourceURL + ' has just been updated with new content');
     },
-    reload: filepath.match(/\.(css|js|html)$/),
+    reload: filepath.match(/\.(js|html)$/)
   });
 }
 

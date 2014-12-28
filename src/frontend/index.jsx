@@ -1,4 +1,4 @@
-var console = require('console');
+var console = require('console-browserify');
 var io = require('socket.io-client');
 var React = require('react');
 var Router = require('react-router');
@@ -29,5 +29,3 @@ var routes = (
 Router.run(routes, /*Router.HistoryLocation,*/ function (Handler) {
   React.render(<Handler />, document.body);
 });
-
-var socket = io();
