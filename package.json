@@ -39,12 +39,10 @@
     "gulp-util": "^3.0.1",
     "jest-cli": "^0.2.1",
     "jshint-stylish": "^1.0.0",
-    "mocha": "^2.0.1",
     "nodemon": "^1.2.1",
     "open": "0.0.5",
     "reactify": "^0.17.1",
     "require-dir": "^0.1.0",
-    "should": "^4.4.1",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.2.1"
   },

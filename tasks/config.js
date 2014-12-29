@@ -22,7 +22,7 @@ module.exports = {
     images: path.join(rootDir, 'src/frontend/img/**/*'),
     imagesDest: path.join(rootDir, 'dist/img'),
     templates: path.join(rootDir, 'src/frontend/**/*.html'),
-    tests: path.join(rootDir, 'test/**/*.{js,jsx}'),
+    tests: path.join(rootDir, '**/__tests__/**/*.{js,jsx}'),
     dest: path.join(rootDir, 'dist'),
   }
 };
