@@ -3,8 +3,8 @@ var Customer = require('../model');
 
 describe('Customer', function () {
   describe('stuff', function () {
-    beforeEach(function () {
-    });
+    //beforeEach(function () {
+    //});
 
     it('should fetch a list of customers', function () {
       var customers = Customer.get();
@@ -12,7 +12,7 @@ describe('Customer', function () {
       expect(customers.length).toEqual(2);
     });
 
-    afterEach(function () {
-    });
+    //afterEach(function () {
+    //});
   });
 });

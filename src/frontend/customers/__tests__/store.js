@@ -1,15 +1,17 @@
 jest.dontMock('../store');
+//var Customers = require('../store').Customers;
 
-describe('customers', function () {
-  describe('CreateStateStore', function () {
+describe('Customer Stores', function () {
+  describe('Customers', function () {
     var store;
 
     beforeEach(function () {
-      //store = require('../store').CreateState;
     });
 
-    it('adds 1 + 2 to equal 3', function () {
-        expect(1 + 2).toBe(3);
+    it('#onEdit', function () {
+      expect(true).toEqual(true);
+      //store.onEdit(id);
+      //expect(store.updateWith).toBeCalled();
     });
   });
 });

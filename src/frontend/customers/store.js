@@ -1,7 +1,7 @@
 var Reflux = require('reflux');
 var io = require('socket.io-client');
 var socket = io();
-var console = require('console');
+var console = require('console-browserify');
 var CreateStateActions = require('./actions').CreateState;
 
 var CreateState = Reflux.createStore({
