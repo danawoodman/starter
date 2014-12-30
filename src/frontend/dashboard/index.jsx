@@ -1,9 +1,13 @@
 var React = require('react');
+var RevenueChart = require('../revenue-chart/components/RevenueChart');
 
 var Dashboard = React.createClass({
   render: function () {
     return (
-      <h1 className="page-header">Welcome home!</h1>
+      <div>
+        <h1 className="page-header">Welcome home!</h1>
+        <RevenueChart />
+      </div>
     );
   }
 });
