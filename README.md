@@ -61,7 +61,7 @@ This project uses [Mocha][mocha] test runner and [should.js][should] assertion l
 ## TODO
 
 - [ ] Model/form validation (https://github.com/insin/newforms ?)
-- [ ] Griddle tables
+- [X] Griddle tables
 - [ ] Jest test suite
 - [ ] Login component
 - [ ] JSfmt
