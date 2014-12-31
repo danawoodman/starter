@@ -52,6 +52,7 @@
     "console-browserify": "^1.1.0",
     "dotenv": "^0.4.0",
     "express": "^4.10.6",
+    "griddle-react": "^0.1.19",
     "jade": "^1.8.2",
     "morgan": "^1.5.0",
     "react": "*",

@@ -7,12 +7,13 @@ var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 var App = require('./layout/app');
-var Customers = require('./customers/components/Customers');
-var CustomerDetail = require('./customers/components/Detail');
-var CustomerSection = require('./customers/components/Section');
-var Dashboard = require('./dashboard');
+var Customers = require('./customers/component').Customers;
+var CustomerDetail = require('./customers/component').Detail;
+var CustomerSection = require('./customers/component').Section;
+var Dashboard = require('./dashboard/component').Dashboard;
 var NotFound = require('./404');
 
+//<Redirect from="company" to="about" />
 var routes = (
   <Route name="app" handler={App} path="/">
     <DefaultRoute handler={Dashboard} />
@@ -24,7 +25,6 @@ var routes = (
     <NotFoundRoute handler={NotFound} />
   </Route>
 );
-//<Redirect from="company" to="about" />
 
 Router.run(routes, /*Router.HistoryLocation,*/ function (Handler) {
   React.render(<Handler />, document.body);

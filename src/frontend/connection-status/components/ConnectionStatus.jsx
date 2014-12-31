@@ -1,7 +1,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var capitalize = require('capitalize');
-var ConnectionStatusStore = require('./store');
+var ConnectionStatusStore = require('../store');
 //var ConnectionStatusActions = require('./actions');
 
 var Component = React.createClass({
