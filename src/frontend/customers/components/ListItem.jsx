@@ -3,7 +3,7 @@ var Link = require('react-router').Link;
 var Button = require('react-bootstrap').Button;
 var ButtonGroup = require('react-bootstrap').ButtonGroup;
 var OverlayMixin = require('react-bootstrap').OverlayMixin;
-var FontAwesome = require('../../font-awesome/index');
+var FontAwesome = require('../../font-awesome/component').FontAwesome;
 var CustomerActions = require('../actions').Customers;
 var EditModal = require('./EditForm');
 
