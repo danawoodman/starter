@@ -16,7 +16,7 @@ gulp.task('clean-scripts', function (done) {
 
 function scripts(watch) {
   var bundler = browserify({
-    entries: [config.paths.main],
+    entries: [config.paths.mainScript],
     basedir: __dirname,
     debug: !config.production,
     extensions: ['.jsx'],
@@ -56,7 +56,10 @@ gulp.task('watch-scripts', function () {
 
 gulp.task('fmt', function () {
   return gulp
-    .src(config.paths.scripts)
+    .src([
+      './src/frontend/**/*.js',
+      '!./src/frontend/vendor'
+    ])
     .pipe(jsfmt.format())
     .pipe(gulp.dest('./src/frontend'));
 });

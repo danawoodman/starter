@@ -14,9 +14,16 @@ module.exports = {
   protocol: 'http://',
   paths: {
     bundle: 'index.js',
-    main: path.join(rootDir, 'src/frontend/index.jsx'),
     server: path.join(rootDir, 'src/backend/server.js'),
-    scripts: path.join(rootDir, 'src/frontend/**/*.{js,jsx}'),
+    mainScript: path.join(rootDir, 'src/frontend/index.jsx'),
+    allScripts: [
+      path.join(rootDir, 'src/frontend/**/*.{js,jsx}'),
+      '!' + path.join(rootDir, 'src/frontend/vendor')
+    ],
+    scripts: [
+      path.join(rootDir, 'src/frontend/**/*.js'),
+      '!' + path.join(rootDir, 'src/frontend/vendor')
+    ],
     styles: path.join(rootDir, 'src/frontend/**/*.less'),
     baseStylePath: path.join(rootDir, 'src/frontend/index.less'),
     images: path.join(rootDir, 'src/frontend/img/**/*'),

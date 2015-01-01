@@ -37,15 +37,15 @@ var Customers = Reflux.createStore({
   // Indicate the given customer is being edited in the UI.
   onEdit: function (id) {
     this.updateWithID(id, function (customer) {
-        customer.editing = true;
-        return customer;
+      customer.editing = true;
+      return customer;
     });
   },
 
   onStopEditing: function (id) {
     this.updateWithID(id, function (customer) {
-        customer.editing = false;
-        return customer;
+      customer.editing = false;
+      return customer;
     });
   },
 
@@ -57,8 +57,7 @@ var Customers = Reflux.createStore({
 
     socket.emit(
       'update customer',
-      customer,
-      function (err, message) {
+      customer, function (err, message) {
         console.log('\tUpdate customer returned', customer, err, message);
 
         if (err) {
@@ -89,8 +88,7 @@ var Customers = Reflux.createStore({
     // Tell the server to save the customer.
     socket.emit(
       'new customer',
-      customer,
-      function (err, newCustomer) {
+      customer, function (err, newCustomer) {
         if (err) {
           // TODO: Handle errors...
         }
@@ -121,8 +119,7 @@ var Customers = Reflux.createStore({
 
     socket.emit(
       'delete customer',
-      id,
-      function (err, message) {
+      id, function (err, message) {
         if (err) {
           // TODO: Handle errors...
         }

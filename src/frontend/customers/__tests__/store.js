@@ -5,8 +5,7 @@ describe('Customer Stores', function () {
   describe('Customers', function () {
     var store;
 
-    beforeEach(function () {
-    });
+    beforeEach(function () {});
 
     it('#onEdit', function () {
       expect(true).toEqual(true);
