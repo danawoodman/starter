@@ -5,9 +5,7 @@ var Store = require('../../revenue-chart/store');
 var RevenueChart = require('../../revenue-chart/component').RevenueChart;
 
 var Component = React.createClass({
-  mixins: [
-    Reflux.connect(Store, 'series'),
-  ],
+  mixins: [Reflux.connect(Store, 'series')],
 
   render: function () {
     return (
@@ -15,7 +13,10 @@ var Component = React.createClass({
         <h1 className="page-header">Welcome home!</h1>
         <RevenueChart />
         <h2>Dashboard Data</h2>
-        <Griddle results={this.state.series} tableClassName="table table-striped" />
+        <Griddle
+          showFilter={true}
+          results={this.state.series}
+          tableClassName="table table-striped" />
       </div>
     );
   }
