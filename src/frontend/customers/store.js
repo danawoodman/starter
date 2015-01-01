@@ -87,8 +87,9 @@ var Customers = Reflux.createStore({
 
     // Tell the server to save the customer.
     socket.emit(
-      'new customer',
-      customer, function (err, newCustomer) {
+      'create customer',
+      customer,
+      function (err, newCustomer) {
         if (err) {
           // TODO: Handle errors...
         }
@@ -118,8 +119,9 @@ var Customers = Reflux.createStore({
     console.log('destroy customer:', id);
 
     socket.emit(
-      'delete customer',
-      id, function (err, message) {
+      'destroy customer',
+      id,
+      function (err, message) {
         if (err) {
           // TODO: Handle errors...
         }
