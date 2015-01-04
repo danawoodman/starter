@@ -24,7 +24,12 @@ Running the gulp scripts (see below), allows you to do some other awesome things
 ## Screenshots
 
 Customer listing:
-![screen](http://cl.ly/Z5ON/Screen%20Shot%202014-12-23%20at%208.46.45%20PM.png)
+
+![customer listing](http://cl.ly/Z5ON/Screen%20Shot%202014-12-23%20at%208.46.45%20PM.png)
+
+Bi-directional WebSocket communication:
+
+![websockets sync](http://f.cl.ly/items/1c3b1X0T293D0u0D183z/Screen%20Recording%202015-01-03%20at%2007.51%20PM.gif)
 
 ## Setup
 
