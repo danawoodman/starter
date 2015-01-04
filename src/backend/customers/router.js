@@ -1,8 +1,8 @@
 var console = require('console-browserify');
 var Customer = require('./model');
 
-var Router = {
-  create: function (customer, callback) {
+function Router(io, socket) {
+  this.create = function (customer, callback) {
     console.log('new customer:', customer);
 
     // TODO: Need to handle failures in saving.
@@ -19,14 +19,17 @@ var Router = {
     }
 
     callback(null, cust);
-  },
 
-  read: function () {
+    // Let other sockets know the customer was created.
+    socket.broadcast.emit('customer created', cust);
+  };
+
+  this.read = function () {
     console.log('retrieving list of customers');
     io.emit('read customers', Customer.get());
-  },
+  };
 
-  update: function (customer, callback) {
+  this.update = function (customer, callback) {
     console.log('update customer:', customer);
 
     var err = Customer.update(customer);
@@ -38,9 +41,12 @@ var Router = {
     }
 
     callback(null, 'Success!');
-  },
 
-  destroy: function (id, callback) {
+    // Let other sockets know the customer was updated.
+    socket.broadcast.emit('customer updated', customer);
+  };
+
+  this.destroy = function (id, callback) {
     console.log('delete customer:', id);
 
     var err = Customer.destroy(id);
@@ -52,13 +58,21 @@ var Router = {
     }
 
     callback(null, 'Success!');
-  }
-};
+
+    // Let other sockets know the customer was destroyed.
+    socket.broadcast.emit('customer destroyed', id);
+  };
+
+  return this;
+}
 
 module.exports = function (io, socket) {
+  // Trigger reading customers on initial connection.
   io.emit('read customers', Customer.get());
-  socket.on('create customer', Router.create);
-  socket.on('read customers', Router.read);
-  socket.on('update customer', Router.update);
-  socket.on('destroy customer', Router.destroy);
+
+  var router = new Router(io, socket);
+  socket.on('create customer', router.create);
+  socket.on('read customers', router.read);
+  socket.on('update customer', router.update);
+  socket.on('destroy customer', router.destroy);
 };

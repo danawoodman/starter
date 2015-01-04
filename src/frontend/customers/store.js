@@ -4,6 +4,7 @@ var socket = io();
 var console = require('console-browserify');
 var CreateStateActions = require('./actions').CreateState;
 
+// The state of the create Customer modal.
 var CreateState = Reflux.createStore({
   listenables: [require('./actions').CreateState],
 
@@ -24,9 +25,14 @@ var Customers = Reflux.createStore({
   listenables: [require('./actions').Customers],
 
   init: function () {
-    // Fetch customers on initial load.
     console.log('Initialize customer store.');
+    // Fetch customers on initial load.
     socket.on('read customers', this.updateList.bind(this));
+
+    // Listen for updates from other connected sockets.
+    socket.on('customer created', this.createCustomer.bind(this));
+    socket.on('customer updated', this.updateCustomer.bind(this));
+    socket.on('customer destroyed', this.destroyCustomer.bind(this));
   },
 
   getInitialState: function () {
@@ -58,21 +64,24 @@ var Customers = Reflux.createStore({
     socket.emit(
       'update customer',
       customer, function (err, message) {
-        console.log('\tUpdate customer returned', customer, err, message);
-
         if (err) {
           // TODO: Handle errors...
         }
 
-        this.updateWithID(customer.id, function (cust, index, arr) {
-          cust = customer;
-          cust.saving = false;
-          cust.editing = false;
-          arr[index] = cust;
-          console.log('\tUpdated customer:', cust);
-        });
+        this.updateCustomer(customer);
       }.bind(this)
     );
+  },
+
+  updateCustomer: function (customer) {
+    console.log('Update customer:', customer);
+
+    this.updateWithID(customer.id, function (cust, index, arr) {
+      cust = customer;
+      cust.saving = false;
+      cust.editing = false;
+      arr[index] = cust;
+    });
   },
 
   onCreate: function (customer) {
@@ -94,8 +103,6 @@ var Customers = Reflux.createStore({
           // TODO: Handle errors...
         }
 
-        console.log('\tNew customer returned', customer, err, newCustomer);
-
         this.list.forEach(function (cust, index, arr) {
           if (cust === customer) {
             console.log('\tUpdating existing customer', cust, 'with', customer);
@@ -107,12 +114,14 @@ var Customers = Reflux.createStore({
 
         // Close the create dialog when save succeeds.
         CreateStateActions.close();
-
-        this.updateList(this.list);
-
-        console.log('\tCreate customer', customer);
       }.bind(this)
     );
+  },
+
+  createCustomer: function (customer) {
+    console.log('Create customer', customer);
+    this.list.push(customer);
+    this.updateList(this.list);
   },
 
   onDestroy: function (id) {
@@ -125,12 +134,15 @@ var Customers = Reflux.createStore({
         if (err) {
           // TODO: Handle errors...
         }
-
-        this.updateWithID(id, function (cust, index, arr) {
-          arr.splice(index, 1);
-        });
+        this.destroyCustomer(id);
       }.bind(this)
     );
+  },
+
+  destroyCustomer: function (id) {
+    this.updateWithID(id, function (cust, index, arr) {
+      arr.splice(index, 1);
+    });
   },
 
   updateList: function (list) {
