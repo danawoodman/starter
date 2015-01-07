@@ -63,8 +63,11 @@ var Customers = Reflux.createStore({
 
     socket.emit(
       'update customer',
-      customer, function (err, message) {
+      customer,
+      function (err, message) {
+        console.log('UPDATE!');
         if (err) {
+          console.error(err);
           // TODO: Handle errors...
         }
 

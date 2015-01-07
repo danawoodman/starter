@@ -5,6 +5,13 @@ var Input = require('react-bootstrap').Input;
 var CustomerActions = require('../actions').Customers;
 
 var Component = React.createClass({
+
+  getPropTypes: {
+    id: React.PropTypes.number,
+    name: React.PropTypes.string.isRequired,
+    email: React.PropTypes.string.isRequired
+  },
+
   getInitialState: function () {
     return {
       name: '',

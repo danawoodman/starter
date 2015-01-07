@@ -8,6 +8,7 @@ var CustomerActions = require('../actions').Customers;
 var EditModal = require('./EditForm');
 
 var Component = React.createClass({
+
   mixins: [OverlayMixin],
 
   onDeleteCustomer: function (e) {
@@ -27,7 +28,7 @@ var Component = React.createClass({
 
   renderOverlay: function () {
     if (!this.props.editing) {
-      return <span />;
+      return;
     }
 
     return (
