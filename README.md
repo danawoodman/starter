@@ -1,3 +1,5 @@
+# *Deprecated in favor of [builtbybig/start](https://github.com/BuiltByBig/start)*
+
 # Starter
 
 Start project for frontend applications using:
